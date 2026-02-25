@@ -11,8 +11,8 @@ Deployed with Docker on Render and connected to PostgreSQL (Neon).
 https://springboot-jpa-rest-api.onrender.com
 
 You can test the API using:
-
 GET /juegos
+
 ---
 
 ## 🛠 Technologies Used
