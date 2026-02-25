@@ -1,51 +1,90 @@
-# Games API - Spring Boot REST API
+Games API - Spring Boot REST API
 
-REST API built with **Spring Boot**, **JPA**, **Hibernate**, and **H2 Database**.
+RESTful API built with Spring Boot for managing video games.
+Deployed with Docker on Render and connected to PostgreSQL (Neon).
 
-## Technologies Used
+Live Demo
 
-- Java 21
-- Spring Boot
-- Spring Data JPA
-- Hibernate
-- H2 Database
-- Maven
+API deployed at:
+https://springboot-jpa-rest-api.onrender.com/juegos
 
-## Features
+Technologies Used
 
-- Create a game (POST /juegos)
-- Get all games (GET /juegos)
-- Get a game by ID (GET /juegos/{id})
-- Update a game (PUT /juegos/{id})
-- Delete a game (DELETE /juegos/{id})
-- Search by title (GET /juegos/query?tituloNombre=...)
+Java 21
+Spring Boot
+Spring Data JPA
+Hibernate
+PostgreSQL (Neon)
+Maven
+Docker
+Render (Cloud Deployment)
 
-## Endpoints
+Features
 
-GET /juegos  
-GET /juegos/{id}  
-POST /juegos  
-PUT /juegos/{id}  
-DELETE /juegos/{id}  
-GET  /juegos/query?tituloNombre={name} Search games by title 
+Create a game → POST /juegos
+Get all games → GET /juegos
+Get a game by ID → GET /juegos/{id}
+Update a game → PUT /juegos/{id}
+Delete a game → DELETE /juegos/{id}
+Search by title → GET /juegos/query?tituloNombre={name}
 
-## Database
+📌 Endpoints
+GET     /juegos
+GET     /juegos/{id}
+POST    /juegos
+PUT     /juegos/{id}
+DELETE  /juegos/{id}
+GET     /juegos/query?tituloNombre={name}
 
-- In-memory **H2 database**
-- H2 Console available at: `http://localhost:8080/h2-console`
-- JDBC URL: `jdbc:h2:mem:testdb`
-- Username: `sa`
-- Password: (empty)
+Database
 
-> 💡 All data is temporary and will be lost when the application stops. You can test creating, updating, and deleting games while the app is running.
+This project uses PostgreSQL hosted on Neon.
+Database connection is configured using environment variables:
 
-## How to Run
+spring.datasource.url=${DB_URL}
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
 
-1. Clone the repository
-2. Open in your IDE
-3. Run `GamesApiApplication.java`
-4. Access endpoints using Postman, browser, or any REST client
+Environment Variables
 
-## Author
+These variables must be configured locally if you want to run the project outside Render.
 
-**Hyrum** 
+In production (Render), they are configured in the service dashboard.
+
+Docker
+
+This project includes a Dockerfile for deployment.
+
+It uses a multi-stage build:
+- Maven image for compiling the project
+- Lightweight JRE image for running the application
+
+The application is deployed on Render using Docker.
+
+▶ How to Run Locally
+
+Clone the repository
+Configure environment variables
+
+Run:
+
+./mvnw spring-boot:run
+
+or
+
+mvn spring-boot:run
+
+☁ Deployment
+
+The application is deployed on Render using Docker.
+
+Render automatically:
+
+Builds the Docker image
+Assigns a dynamic PORT
+Injects environment variables
+Exposes the service publicly
+
+👨‍💻 Author
+
+Hyrum
